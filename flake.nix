@@ -22,13 +22,13 @@
             ms-python.vscode-pylance
             ms-python.python
             ms-python.debugpy
-            ms-python.pylint
             ms-python.black-formatter
           ];
         })
         (python3.withPackages (python-pkgs: with python-pkgs; [
         ]))
       ];
+      buildInputs = [ pkgs.bashInteractive ];
     };
   };
 }
