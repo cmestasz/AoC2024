@@ -1,12 +1,13 @@
 with open("5i.txt") as f:
     l = f.readline().strip()
-    d = ()
+    d = []
     while l != "":
         a, b = l.split("|")
-        d += ((a, b),)
+        d.append((a, b))
         l = f.readline().strip()
     l = f.readline().strip()
     s = 0
+    d = set(d)
     while l != "":
         c = l.split(",")
         v = True
