@@ -34,21 +34,17 @@ with open("4i.txt") as f:
     s = l - 1
     for i in range(l):
         c[i] = c[i].strip()
-        # hor down
         d = dd(i, 0, s, s - i)
         kmp(c, i, 0, 1, 1, d, "MAS", r, True)
         kmp(c, i, 0, 1, 1, d, "SAM", r, True)
-        # hor up
         d = dd(i, 0, 0, i)
         kmp(c, i, 0, -1, 1, d, "MAS", r, False)
         kmp(c, i, 0, -1, 1, d, "SAM", r, False)
         if i == 0:
             continue
-        # ver down
         d = dd(s, i, i, s)
         kmp(c, 0, i, 1, 1, d, "MAS", r, True)
         kmp(c, 0, i, 1, 1, d, "SAM", r, True)
-        # ver up
         d = dd(0, i, s - i, s)
         kmp(c, s, i, -1, 1, d, "MAS", r, False)
         kmp(c, s, i, -1, 1, d, "SAM", r, False)

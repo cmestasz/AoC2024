@@ -1,5 +1,3 @@
-import re
-
 o = set()
 ds = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 with open("6i.txt") as f:

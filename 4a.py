@@ -36,27 +36,21 @@ with open("4i.txt") as f:
     s = l - 1
     for i in range(l):
         c[i] = c[i].strip()
-        # hor straight
         co += kmp(c, i, 0, 0, 1, l, "XMAS")
         co += kmp(c, i, 0, 0, 1, l, "SAMX")
-        # hor down
         d = dd(i, 0, s, s - i)
         co += kmp(c, i, 0, 1, 1, d, "XMAS")
         co += kmp(c, i, 0, 1, 1, d, "SAMX")
-        # hor up
         d = dd(i, 0, 0, i)
         co += kmp(c, i, 0, -1, 1, d, "XMAS")
         co += kmp(c, i, 0, -1, 1, d, "SAMX")
-        # ver straight
         co += kmp(c, 0, i, 1, 0, l, "XMAS")
         co += kmp(c, 0, i, 1, 0, l, "SAMX")
         if i == 0:
             continue
-        # ver down
         d = dd(s, i, i, s)
         co += kmp(c, 0, i, 1, 1, d, "XMAS")
         co += kmp(c, 0, i, 1, 1, d, "SAMX")
-        # ver up
         d = dd(0, i, s - i, s)
         co += kmp(c, s, i, -1, 1, d, "XMAS")
         co += kmp(c, s, i, -1, 1, d, "SAMX")
