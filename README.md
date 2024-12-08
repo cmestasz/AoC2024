@@ -4,4 +4,4 @@
 
 Therefore!
 
-<p style="font-size: 10px">I won't take this seriously and the moment i can't solve a problem i'll just give up</p>
+I won't take this seriously and the moment i can't solve a problem i'll just give up
