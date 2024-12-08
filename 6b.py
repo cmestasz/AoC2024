@@ -89,7 +89,6 @@ def chk(d, n, p, si, sj, cds, h, w, ph):
     if rr == 1:
         if (n[0], n[1]) not in sl:
             c += 1
-            print((n[0], n[1]))
             sl.add((n[0], n[1]))
     si[n[0]].remove(n[1])
     sj[n[1]].remove(n[0])

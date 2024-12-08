@@ -5,7 +5,7 @@ with open("2i.txt") as f:
         r = [int(x) for x in li.split()]
         uv = dv = p = True
         c = False
-        f = 0
+        m = 0
         l = 0
         i = 1
         while i < len(r):
@@ -15,12 +15,12 @@ with open("2i.txt") as f:
                 if p or c:
                     p = False
                     if not c:
-                        f = i
+                        m = i
                         c = True
-                        l = f - 1
+                        l = m - 1
                     else:
                         c = False
-                        i = f - 1
+                        i = m - 1
                         l = i - 1
                 else:
                     uv = False
@@ -30,7 +30,7 @@ with open("2i.txt") as f:
         if not uv:
             i = 1
             l = 0
-            f = 0
+            m = 0
             p = True
             c = False
             while i < len(r):
@@ -40,18 +40,17 @@ with open("2i.txt") as f:
                     if p or c:
                         p = False
                         if not c:
-                            f = i
+                            m = i
                             c = True
-                            l = f - 1
+                            l = m - 1
                         else:
                             c = False
-                            i = f - 1
+                            i = m - 1
                             l = i - 1
                     else:
                         dv = False
                         break
                 i += 1
         s += uv or dv
-        print(uv or dv)
         li = f.readline()
     print(s)
