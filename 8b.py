@@ -28,5 +28,3 @@ for k in fr.keys():
                 a.add(de)
                 de = (de[0] + di, de[1] + dj)
 print(len(a))
-
-# 379
