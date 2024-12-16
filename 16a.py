@@ -1,30 +1,27 @@
-import sys
+import heapq
 
 dd = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
+def ss(ws, i, j, ei, ej, v, c):
+    d = 0
+    c[i][j] = 0
+    q = [(0, i, j, d,),]
+    while len(q) > 0:
+        p, i, j, d = heapq.heappop(q)
+        v[i][j] = True
+        for w in range(-1, 2):
+            fr = (d + w) % 4
+            cdd = dd[fr]
+            cdi = i + cdd[0]
+            cdj = j + cdd[1]
+            if (cdi, cdj,) not in ws and not v[cdi][cdj]:
+                df = (1 if w == 0 else 1001)
+                if c[cdi][cdj] > c[i][j] + df:
+                    c[cdi][cdj] = c[i][j] + df
+                    heapq.heappush(q, (c[cdi][cdj], cdi, cdj, fr,))
+    return c[ei][ej]
 
-def ss(me, i, j, s, ws, d, v, ei, ej):
-    if (i, j,) in ws or v[i][j][d]:
-        return float("inf")
-    if i == ei and j == ej:
-        return 0
-    print(i+1, j+1, d)
-    k = (i, j, d,)
-    if k not in me:
-        v[i][j][d] = True
-        fr = 1 + ss(me, i + dd[d][0], j + dd[d][1], s, ws, d, v, ei, ej)
-        d2 = (d + 1) % 4
-        rr = 1001 + ss(me, i + dd[d2][0], j + dd[d2][1], s, ws, (d + 1) % 4, v, ei, ej)
-        d2 = (d - 1) % 4
-        rl = 1001 + ss(me, i + dd[d2][0], j + dd[d2][1], s, ws, (d - 1) % 4, v, ei, ej)
-        v[i][j][d] = False
-        mi = min(rr, rl, fr)
-        if mi != fr:
-            k = (i, j, d2,)
-        me[k] = mi
-    return me[k]
 
-sys.setrecursionlimit(100000)
 with open("16i.txt") as f:
     l = f.readline().strip()
     i = 0
@@ -41,5 +38,6 @@ with open("16i.txt") as f:
         i += 1
         l = f.readline().strip()
     me = {}
-    v = [[[False for _ in range(4)] for _ in range(w)] for _ in range(i)]
-    print(ss(me, s[0], s[1], s, ws, 0, v, e[0], e[1]))
+    v = [[False for _ in range(w)] for _ in range(i)]
+    c = [[float("inf") for _ in range(w)] for _ in range(i)]
+    print(ss(ws, s[0], s[1], e[0], e[1], v, c))
