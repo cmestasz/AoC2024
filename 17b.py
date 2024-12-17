@@ -43,7 +43,7 @@ for i in range(len(p) - 1, -1, -1):
                     rb = rb ^ rc
                 elif p[pc] == 5:
                     s.append(co % 8)
-                    if s[len(s) - 1] != p[len(s) - 1]:
+                    if s[len(s) - 1] != es[len(s) - 1]:
                         break
                 elif p[pc] == 6:
                     rb = ra // (2**co)
@@ -56,4 +56,4 @@ for i in range(len(p) - 1, -1, -1):
             if j == len(es):
                 ncds.append(ira * 8)
     cds = ncds
-print(cds[0])
+print(min(cds) // 8)
