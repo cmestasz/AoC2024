@@ -7,13 +7,13 @@ with open("22i.txt") as f:
         d = {}
         q = deque()
         v = int(li)
-        sv = int(str(v)[-1:])
+        sv = v % 10
         c = sv
         for _ in range(2000):
             v = (v ^ (v << 6)) % 16777216
             v = (v ^ (v >> 5)) % 16777216
             v = (v ^ (v << 11)) % 16777216
-            sv = int(str(v)[-1:])
+            sv = v % 10
             q.append(sv - c)
             c = sv
             if len(q) == 4:
