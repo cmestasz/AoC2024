@@ -29,9 +29,6 @@
         ]))
       ];
       buildInputs = [ pkgs.bashInteractive ];
-      shellHook = ''
-        exec zsh
-      '';
     };
   };
 }
